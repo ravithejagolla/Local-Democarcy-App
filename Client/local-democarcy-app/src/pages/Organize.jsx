@@ -17,7 +17,7 @@ const Organize = () => {
     // Fetch events
     const fetchEvents = async () => {
       try {
-        const response = await axios.get("http://localhost/event/get-event");
+        const response = await axios.get("https://local-democarcy-app.onrender.com/event/get-event");
         setEvents(response.data);
       } catch (err) {
         console.error("Error fetching events:", err);
@@ -41,7 +41,7 @@ const Organize = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost/event/create-event", newEvent, {
+      const response = await axios.post("https://local-democarcy-app.onrender.com/event/create-event", newEvent, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

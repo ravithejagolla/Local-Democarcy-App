@@ -13,7 +13,7 @@ const IssueFeed = () => {
 
   const fetchIssues = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/issues", {
+      const res = await axios.get("https://local-democarcy-app.onrender.com/api/issues", {
         params: filter ? { resolved: filter } : {},
       });
       setIssues(res.data);
@@ -43,7 +43,7 @@ const IssueFeed = () => {
     if (image) formData.append("image", image);
 
     try {
-      const res = await axios.post("http://localhost:5000/api/issues/with-media", formData, {
+      const res = await axios.post("https://local-democarcy-app.onrender.com/api/issues/with-media", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -66,12 +66,12 @@ const IssueFeed = () => {
   };
 
   const vote = async (id, type) => {
-    const res = await axios.patch(`http://localhost:5000/api/issues/${id}/vote`, { type });
+    const res = await axios.patch(`https://local-democarcy-app.onrender.com/${id}/vote`, { type });
     socket.emit("issue-update", res.data);
   };
 
   const toggleResolved = async (id, currentStatus) => {
-    const res = await axios.patch(`http://localhost:5000/api/issues/${id}`, {
+    const res = await axios.patch(`https://local-democarcy-app.onrender.com/api/issues/${id}`, {
       resolved: !currentStatus,
     });
     socket.emit("issue-update", res.data);
@@ -142,7 +142,7 @@ const IssueFeed = () => {
 
               {issue.imageUrl && (
                 <img
-                  src={`http://localhost:5000${issue.imageUrl}`}
+                  src={`https://local-democarcy-app.onrender.com${issue.imageUrl}`}
                   alt="issue"
                   className="w-full max-h-64 object-cover rounded-lg border"
                 />

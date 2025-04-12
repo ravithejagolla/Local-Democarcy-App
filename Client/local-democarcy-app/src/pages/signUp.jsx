@@ -16,7 +16,7 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
-      await axios.post('http://localhost:5000/auth/signup', {
+      await axios.post('https://local-democarcy-app.onrender.com/auth/signup', {
         name,
         email,
         password,
